@@ -4,12 +4,15 @@ __version__ = "0.1"
 
 import re
 import sys
-import json
-import requests
-import feedparser
 import urlparse
 from optparse import OptionParser
-from mail import helper as mail
+
+try:
+    # cli entry points are messing with our imports (setup.py)
+    import json, requests, feedparser
+    from mail import helper as mail
+except ImportError, e:
+    pass
 
 parser = OptionParser()
 
@@ -78,7 +81,6 @@ def _send_entry(entry):
     spacer = 78 * u'-'
     joiner = u'\n%s\n' % spacer
 
-    title = unescape(entry.title)
     content = joiner.join([
         unescape(c.value) for c in entry.content
         ] )
@@ -87,8 +89,7 @@ def _send_entry(entry):
     content += entry['link']
 
     content = content.encode('utf-8')
-    title = u'[%s] ' % entry.updated 
-    title += title
+    title = u'[%s] %s' % (entry.updated , entry.title)
     title = title.encode('utf-8')
 
     message = mail.plain(content, from_name = "Gumtree Monitor", from_email = "gumtree@owns.ch", subject = title, to = emails)
