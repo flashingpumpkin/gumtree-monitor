@@ -81,7 +81,9 @@ def _send_entry(entry):
     title = unescape(entry.title)
     content = joiner.join([
         unescape(c.value) for c in entry.content
-        ] + [entry.link] )
+        ] )
+
+    content += entry['link']
 
 
     content = content.encode('utf-8')
