@@ -87,6 +87,8 @@ def _send_entry(entry):
     content += entry['link']
 
     content = content.encode('utf-8')
+    title = u'[%s] ' % entry.updated 
+    title += title
     title = title.encode('utf-8')
 
     message = mail.plain(content, from_name = "Gumtree Monitor", from_email = "gumtree@owns.ch", subject = title, to = emails)
