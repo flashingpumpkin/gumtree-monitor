@@ -104,7 +104,12 @@ def fetch():
                 index.append(entry['link'])
                 if not opts.index_only:
                     print "Sending ", entry.title
-                    _send_entry(entry)
+                    try:
+                        _send_entry(entry)
+                    except Exception, e:
+                        print 10 * '..',
+                        print 'error sending'
+                        print e
                 else:
                     print "Indexing ", entry.title
 
