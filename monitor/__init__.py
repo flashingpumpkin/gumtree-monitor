@@ -63,9 +63,9 @@ def unescape(text):
 
 def _make_feed_url(url):
     parsed = urlparse.urlparse(url)
-    path = '/rssfeed/' + parsed.path 
+    path = '/rssfeed' + parsed.path 
     
-    return 'http://www.gumtree.com/%s?%s' % ( path , parsed.query )
+    return 'http://www.gumtree.com%s?%s' % ( path , parsed.query )
 
 def add(url):
     if not 'rssfeed' in url:
