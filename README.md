@@ -4,7 +4,7 @@ Monitor [gumtree](http://www.gumtree.com/) search results like a boss and get em
 
 ## Installation
 
-   $ pip install -e https://github.com/flashingpumpkin/gumtree-monitor.git
+    $ pip install -e https://github.com/flashingpumpkin/gumtree-monitor.git
 
 ## Usage
 
