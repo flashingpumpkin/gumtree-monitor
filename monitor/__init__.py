@@ -103,7 +103,7 @@ def fetch():
             if entry['link'] not in index:
                 index.append(entry['link'])
                 if not opts.index_only:
-                    print "Sending ", entry.title
+                    print u"Sending ", entry.title.encode('utf-8')
                     try:
                         _send_entry(entry)
                     except Exception, e:
