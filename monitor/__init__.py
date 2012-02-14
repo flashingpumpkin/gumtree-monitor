@@ -97,9 +97,14 @@ def _send_entry(entry):
 
 def fetch():
     for url in urls:
-        print "*** Feed: ", url
-        entries = feedparser.parse(requests.get(url).text)['entries']
-        for entry in entries:
+        print u"*** Feed: ",
+        response = requests.get(url)
+        print response.status_code,
+        parsed = feedparser.parse(response.text.endcode('utf-8'))
+        print u"(%d entries)" % (len(parsed['entries']))
+        print unicode(url)
+        
+        for entry in parsed['entries']:
             if entry['link'] not in index:
                 index.append(entry['link'])
                 if not opts.index_only:
