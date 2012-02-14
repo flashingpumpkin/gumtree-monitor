@@ -101,7 +101,7 @@ def fetch():
         response = requests.get(url)
         print response.status_code,
         parsed = feedparser.parse(response.text.encode('utf-8'))
-        print u"(%d entries)" % (len(parsed['entries']))
+        print u"(%d entries)" % (len(parsed['entries'])),
         print unicode(url)
         
         for entry in parsed['entries']:
